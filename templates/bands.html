@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block zawartosc %}
+    <table border = 1>
+        <tr>
+            <th>Band Name</th><th>Year</th><th>Genre</th><th>Active?</th><th>DELETE</th><th>EDIT</th>
+        </tr>
+        {% for band in bands %}
+        <tr>
+            <td>
+                {{ band.name }}
+            </td>
+
+            <td>
+                {{ band.year }}
+            </td>
+            <td>
+                {{ band.get_genre_display }}
+            </td>
+            <td>
+                {% if band.get_genre_display %}
+                    Yes
+                {% else %}
+                    No
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'delete_band' band.id %}">delete</a>
+            </td>
+            <td>
+                <a href="{% url 'delete_band' band.id %}">edit</a>
+            </td>
+
+
+        </tr>
+            {% empty %}
+            nie ma zespołów
+        {% endfor %}
+    </table>
+{#    <ul>#}
+{#    {% for band in bands %}#}
+{#    <li>#}
+{##}
+{#            {{ band.name }} {{ band.year }}<a href="{% url 'delete_band' band.id %}">X</a>#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#    </ul>#}
+{% endblock %}

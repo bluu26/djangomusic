@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+{% block zawartosc %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="album_title" placeholder="Tytuł albumu" value="{{ album.album_title }}">
+    <input type="number" name="album_year" placeholder="Rok wydania" value="{{ album.album_year }}">
+    <input type="number" name="rating" placeholder="Rating" min="1" max="5" value="{{ album.rating }}">
+
+    <input type="submit" value="DETONUJ">
+</form>
+{% endblock %}

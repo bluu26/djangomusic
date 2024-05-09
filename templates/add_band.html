@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block zawartosc %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="nazwa zespołu" value="{{ band.name }}">
+    <input type="number" name="year" placeholder="Rok powstania" value="{{ band.year }}">
+    <input type="checkbox" name="still_active" {% if band.still_active %}checked{% endif %}>
+    <select name="genre">
+        {% for genre in genres %}
+        <option 
+                value = "{{ genre.0 }}">{{ genre.1 }}</option>
+        {% endfor %}
+    </select><br>
+    
+    <input type="submit" value="DETONUJ">
+</form>
+{% endblock %}

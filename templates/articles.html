@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% block zawartosc %}
+    <table border = 1>
+        <tr>
+            <th>Title</th><th>Author</th><th>Content</th><th>Date start</th><th>status</th><th>DS</th><th>DE</th>
+        </tr>
+        {% for article in articles %}
+        <tr>
+            <td>
+                {{ article.title }}
+            </td>
+
+            <td>
+                {{ article.author }}
+            </td>
+            <td>
+                {{ article.content }}
+            </td>
+            <td>
+                {{ article.date_added }}
+            </td>
+            <td>
+                {{ article.get_status_display }}
+            </td>
+            <td>
+                {{ article.date_started }}
+            </td>
+            <td>
+                {{ article.date_ended }}
+            </td>
+        </tr>
+            {% empty %}
+            nie ma artykułów
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block zawartosc %}
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Tytuł" value = "{{ article.title }}">
+    <input type="text" name="author" placeholder="Autor" value = "{{ article.autor }}">
+    <input type="text" name="content" placeholder="Content" value = "{{ article.content }}">
+    <input type="hidden" name="date_added" value="{{ article.date_added|date:'Y-m-d' }}">
+     <select name="status">
+        {% for x in status %}
+        <option 
+                value = "{{ x.0 }}">{{ x.1 }}</option>
+        {% endfor %}
+    </select>
+    <input type="date" name="data_started" value="{{ artice.data_started }}">
+    <input type="date" name="data_ended" value="{{ artice.data_ended }}">
+    <input type="submit" value="DETONUJ">
+</form>
+{% endblock %}
